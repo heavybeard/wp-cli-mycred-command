@@ -1,0 +1,26 @@
+{
+    "name": "heavybeard/wp-cli-mycred-command",
+    "description": "myCRED commands for WP-CLI",
+    "type": "wp-cli-package",
+    "homepage": "https://github.com/heavybeard/wp-cli-mycred-command",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "heavybeard",
+            "homepage": "http://heavybeard.it/"
+        }, {
+            "name": "fraga009",
+            "homepage": "https://github.com/fraga009"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "commands.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+    }
+}
