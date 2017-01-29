@@ -29,7 +29,7 @@ Go to [wiki](https://github.com/heavybeard/wp-cli-mycred-command/wiki) for more 
 
 ### Export Points Log
 
-* [`export`](https://github.com/heavybeard/wp-cli-mycred-command/wiki) - Create a csv file with points log
+* [`export`](https://github.com/heavybeard/wp-cli-mycred-command/wiki/export) - Create a csv file with points log
 
 ```bash
 $ wp mycred export <output-file>
