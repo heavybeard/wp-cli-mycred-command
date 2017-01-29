@@ -25,12 +25,14 @@ $ wp package install heavybeard/wp-cli-mycred-command:@stable
 
 ## Subcommands
 
+Go to [wiki](https://github.com/heavybeard/wp-cli-mycred-command/wiki) for more specifics
+
 ### Export Points Log
 
-* `export` - Create a csv file with points log
+* [`export`](https://github.com/heavybeard/wp-cli-mycred-command/wiki) - Create a csv file with points log
 
 ```bash
-$ wp mycred export <output-file> [--user_id=<user_id>] [--number=<number>] [--order_by=<order_by>] [--order=<order>]
+$ wp mycred export <output-file>
 ```
 
 ### Help
