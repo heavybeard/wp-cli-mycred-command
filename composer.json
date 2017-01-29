@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "files": [
-            "commands.php"
+            "wp-cli-mycred-command.php"
         ]
     },
     "require": {

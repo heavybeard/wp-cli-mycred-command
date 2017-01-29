@@ -10,6 +10,7 @@ https://it.wordpress.org/plugins/mycred/
 
 ## Requires
 
+* myCRED plugin
 * WP-CLI 0.23 or later
 
 ---
