@@ -10,7 +10,7 @@ License: MIT
  */
 
 // Load plugin once and check for WP CLI and myCRED plugin
-if (defined('WP_CLI_MYCRED_COMMAND') && !defined('WP_CLI') && !class_exists('myCRED_Core')) {
+if (defined('WP_CLI_MYCRED_COMMAND') || !class_exists('myCRED_Core') || !defined('WP_CLI')) {
 	return;
 }
 
@@ -22,10 +22,10 @@ define('WP_CLI_MYCRED_COMMANDS_PATH', '/commands/');
 define('WP_CLI_MYCRED_SUBCOMMANDS_PATH', '/subcommands/');
 
 // Require command
-require_once __DIR__ . WP_CLI_MYCRED_HELPERS_PATH . 'WP_CLI_MyCRED_Log.php';
+require_once __DIR__ . WP_CLI_MYCRED_HELPERS_PATH . 'Log.php';
 
 // Require command
 require_once __DIR__ . WP_CLI_MYCRED_COMMANDS_PATH . 'WP_CLI_MyCRED.php';
 
 // Require all subcommands
-require_once __DIR__ . WP_CLI_MYCRED_SUBCOMMANDS_PATH . 'export.php';
+require_once __DIR__ . WP_CLI_MYCRED_SUBCOMMANDS_PATH . 'Export.php';

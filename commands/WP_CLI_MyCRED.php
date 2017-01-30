@@ -2,7 +2,6 @@
 
 namespace MyCRED\Commands;
 
-use MyCRED\Helpers\Log as Log;
 use WP_CLI;
 use WP_CLI_Command;
 
@@ -21,15 +20,6 @@ class WP_CLI_MyCRED extends WP_CLI_Command {
 	 * @var array
 	 */
 	protected $assoc_args;
-
-	/**
-	 * Displays general infos
-	 * @param array $args       Provided args
-	 * @param array $assoc_args Provided associated args
-	 */
-	public function __invoke($args, $assoc_args) {
-		Log::line('myCRED WP-CLI enabled');
-	}
 
 	/**
 	 * Process the provided arguments
