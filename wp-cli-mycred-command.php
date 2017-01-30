@@ -16,11 +16,16 @@ if (defined('WP_CLI_MYCRED_COMMAND') && !defined('WP_CLI') && !class_exists('myC
 
 // Define constants
 define('WP_CLI_MYCRED_COMMAND', true);
+define('WP_CLI_MYCRED_VERBOSE', true);
+define('WP_CLI_MYCRED_HELPERS_PATH', '/helpers/');
 define('WP_CLI_MYCRED_COMMANDS_PATH', '/commands/');
 define('WP_CLI_MYCRED_SUBCOMMANDS_PATH', '/subcommands/');
 
 // Require command
-require_once __DIR__ . WP_CLI_MYCRED_COMMANDS_PATH . 'mycred.php';
+require_once __DIR__ . WP_CLI_MYCRED_HELPERS_PATH . 'WP_CLI_MyCRED_Log.php';
+
+// Require command
+require_once __DIR__ . WP_CLI_MYCRED_COMMANDS_PATH . 'WP_CLI_MyCRED.php';
 
 // Require all subcommands
 require_once __DIR__ . WP_CLI_MYCRED_SUBCOMMANDS_PATH . 'export.php';

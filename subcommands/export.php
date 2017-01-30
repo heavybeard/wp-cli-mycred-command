@@ -1,14 +1,14 @@
 <?php
 
-namespace WP_CLI_myCRED_Command;
+namespace MyCRED\Subcommands;
 
 use WP_CLI;
 
 /**
- * Manage
+ * Manage export subcommand
  */
-class WP_CLI_myCRED extends AnotherClass {
-	public function __construct(argument) {
-		# code...
-	}
+class Export extends WP_CLI_MyCRED {
 }
+
+// Add 'mycred export' command
+WP_CLI::add_command('mycred export', __NAMESPACE__ . '\\Export');
