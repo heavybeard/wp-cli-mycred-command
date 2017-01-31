@@ -12,9 +12,9 @@ class Log {
 	 * @param string  $message The message to show
 	 * @param boolean $verbose Set true to enable echos
 	 */
-	public function line($message, $verbose = true) {
+	public static function debug($message, $verbose = true) {
 		if ($verbose) {
-			WP_CLI::line($msg);
+			WP_CLI::debug($message);
 		}
 	}
 
@@ -22,9 +22,9 @@ class Log {
 	 * @param string  $message The message to show
 	 * @param boolean $verbose Set true to enable echos
 	 */
-	public function log($message, $verbose = true) {
+	public static function error($message, $verbose = true) {
 		if ($verbose) {
-			WP_CLI::log($msg);
+			WP_CLI::error($message);
 		}
 	}
 
@@ -32,9 +32,9 @@ class Log {
 	 * @param string  $message The message to show
 	 * @param boolean $verbose Set true to enable echos
 	 */
-	public function success($message, $verbose = true) {
+	public static function line($message, $verbose = true) {
 		if ($verbose) {
-			WP_CLI::success($msg);
+			WP_CLI::line($message);
 		}
 	}
 
@@ -42,9 +42,29 @@ class Log {
 	 * @param string  $message The message to show
 	 * @param boolean $verbose Set true to enable echos
 	 */
-	public function warning($message, $verbose = true) {
+	public static function log($message, $verbose = true) {
 		if ($verbose) {
-			WP_CLI::warning($msg);
+			WP_CLI::log($message);
+		}
+	}
+
+	/**
+	 * @param string  $message The message to show
+	 * @param boolean $verbose Set true to enable echos
+	 */
+	public static function success($message, $verbose = true) {
+		if ($verbose) {
+			WP_CLI::success($message);
+		}
+	}
+
+	/**
+	 * @param string  $message The message to show
+	 * @param boolean $verbose Set true to enable echos
+	 */
+	public static function warning($message, $verbose = true) {
+		if ($verbose) {
+			WP_CLI::warning($message);
 		}
 	}
 }
