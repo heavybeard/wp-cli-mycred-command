@@ -13,14 +13,34 @@ use WP_CLI;
  */
 class Export extends WP_CLI_MyCRED {
 	/**
-	 * @var array Logs result to export
+	 * @var string Datas to include in export - default from _invoke phpdoc
 	 */
-	private $logsToExport = [];
+	protected static $fields = null;
 
 	/**
-	 * @var array MyCRED query log results
+	 * @var string The CSV file name - default from _invoke phpdoc
 	 */
-	private $myCREDLogs = [];
+	protected static $filename = null;
+
+	/**
+	 * @var string Number of results to show - default from _invoke phpdoc
+	 */
+	protected static $number = null;
+
+	/**
+	 * @var string Type of order - default from _invoke phpdoc
+	 */
+	protected static $order = null;
+
+	/**
+	 * @var string Sort field - default from _invoke phpdoc
+	 */
+	protected static $order_by = null;
+
+	/**
+	 * @var string The user_id to filter - default from _invoke phpdoc
+	 */
+	protected static $user_id = null;
 
 	/**
 	 * Export myCRED log points in a CSV file inside WP_UPLOAD_DIR/mycred
@@ -86,14 +106,14 @@ class Export extends WP_CLI_MyCRED {
 	 * @param array $assoc_args The associated args
 	 */
 	public function __invoke($args, $assoc_args) {
-		$this->processArgs([], $args, [], $assoc_args);
+		self::processArgs([], $args, [], $assoc_args);
 
 		$myCREDDir = Directory::create('mycred');
 		if ($myCREDDir) {
-			$myCREDLogResults = $this->myCREDLogResults($args);
+			$myCREDLogResults = self::myCREDLogResults($args);
 			if ($myCREDLogResults) {
-				$logs     = $this->logsToExport($myCREDLogResults);
-				$filePath = $myCREDDir . '/' . $this->args[0] . '.csv';
+				$logs     = self::logsToExport($myCREDLogResults, $this->fields);
+				$filePath = $myCREDDir . '/' . $this->filename . '.csv';
 
 				$csvFile = CSV::createFile($filePath, $logs);
 				if ($csvFile) {
@@ -123,6 +143,8 @@ class Export extends WP_CLI_MyCRED {
 		$assoc_args['fields'] .= ',id';
 		$assoc_args['fields'] = explode(',', $assoc_args['fields']);
 
+		$this->filename = $args[0];
+
 		parent::processArgs($default_args, $args, $default_assoc_args, $assoc_args);
 	}
 
@@ -131,9 +153,7 @@ class Export extends WP_CLI_MyCRED {
 	 * @param  array   $myCREDLogs Provided logs
 	 * @return array
 	 */
-	private function logsToExport($myCREDLogs) {
-		$fields = $this->assoc_args['fields'];
-
+	private static function logsToExport($myCREDLogs, $fields) {
 		foreach ($myCREDLogs as $index => $log) {
 			$log->time          = self::manageLogConvertTime($log->time);
 			$myCREDLogs[$index] = self::manageLogUnsetData($log, $fields);
@@ -174,7 +194,7 @@ class Export extends WP_CLI_MyCRED {
 	 * @param  array   $args Args to provide to query
 	 * @return array
 	 */
-	private function myCREDLogResults($args) {
+	private static function myCREDLogResults($args) {
 		$myCREDQueryLog = new myCRED_Query_Log($args);
 
 		$results = $myCREDQueryLog->results;

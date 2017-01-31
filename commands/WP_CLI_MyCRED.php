@@ -45,6 +45,7 @@ abstract class WP_CLI_MyCRED extends WP_CLI_Command {
 
 	/**
 	 * Process the provided arguments
+	 * It's necessary to process $args values on subcommand classes
 	 * @param array $default_args       Default args
 	 * @param array $args               Provided args
 	 * @param array $default_assoc_args Default associated args
@@ -53,6 +54,10 @@ abstract class WP_CLI_MyCRED extends WP_CLI_Command {
 	protected function processArgs($default_args = [], $args = [], $default_assoc_args = [], $assoc_args = []) {
 		$this->args       = $args + $default_args;
 		$this->assoc_args = wp_parse_args($assoc_args, $default_args);
+
+		foreach ($this->assoc_args as $property => $assoc_arg) {
+			$this->{$property} = $assoc_arg;
+		}
 	}
 }
 
